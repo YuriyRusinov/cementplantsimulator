@@ -2,6 +2,8 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QtDebug>
+
+#include <classroomwidget.h>
 #include "cement_plant.h"
 
 CementPlant::CementPlant( QObject *parent )
@@ -19,9 +21,6 @@ CementPlant::~CementPlant() {
 }
 
 void CementPlant::GUIViewControl( QWidget* parent, Qt::WindowFlags flags ) {
-    QWidget* w = new QWidget( parent, flags );
-    QLabel* lTitle = new QLabel(tr("Cement plant control"), w );
-    QGridLayout* lay = new QGridLayout( w );
-    lay->addWidget( lTitle, 0, 0, 1, 1 );
+    QWidget* w = new ClassRoomWidget( parent, flags );
     emit setWidgwet( w );
 }

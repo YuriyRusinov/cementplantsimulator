@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7...3.16)
+cmake_minimum_required(VERSION 3.10...3.20)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -12,12 +12,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/app)
 
-if(UNIX)
-    find_library(DL_LIBRARY dl REQUIRED)
-endif()
-
 set(HEADERS
     cementplantmainwindow.h
+)
+
+set(FORMS
+    cement_plant_window.ui
 )
 
 set(SOURCES
@@ -25,7 +25,7 @@ set(SOURCES
     main.cpp
 )
 
-add_executable(app_${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(app_${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS})
 
 if(UNIX)
     target_link_libraries(app_${PROJECT_NAME} ${DL_LIBRARY} )
@@ -44,4 +44,4 @@ target_include_directories(app_${PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
 )
 
-
+qt_standard_project_setup()

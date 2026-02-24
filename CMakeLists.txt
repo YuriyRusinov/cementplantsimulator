@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7..3.16)
+cmake_minimum_required(VERSION 3.10..3.20)
 project(
         cement_plant_simulator
         VERSION 1.0.0
