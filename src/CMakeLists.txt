@@ -13,18 +13,18 @@ find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
 
 qt_standard_project_setup()
 
+add_subdirectory(gui)
+
 set(HEADERS
     cement_plant.h
-    gui/classroomwidget.h
-)
-
-set(FORMS
-    gui/class_room.ui
+    simulationengine.h
+    softplc.h
 )
 
 set(SOURCES
     cement_plant.cpp
-    gui/classroomwidget.cpp
+    simulationengine.cpp
+    softplc.cpp
 )
 
 if (BUILD_SHARED)
@@ -34,7 +34,7 @@ else ()
 endif()
 add_library(handlers::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC Qt6::Core Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt6::Core Qt6::Widgets gui_${PROJECT_NAME})
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Debug build detected, adding DEBUG_MODE definition")
     target_compile_definitions(${PROJECT_NAME} PRIVATE CementPlantV1DEBUG)

@@ -3,6 +3,7 @@
 #include <QtCore>
 
 class QWidget;
+class SimulationEngine;
 
 class CementPlant : public QObject {
 public:
@@ -14,6 +15,8 @@ public:
 signals:
     void setWidgwet( QWidget* w );
 
+private:
+        SimulationEngine* m_simulationEng;
 private:
     Q_OBJECT
 };

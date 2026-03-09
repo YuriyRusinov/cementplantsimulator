@@ -33,7 +33,7 @@ elseif(WIN32)
     target_link_libraries(app_${PROJECT_NAME} kernel32 )
 endif()
 
-target_link_libraries(app_${PROJECT_NAME} ${PROJECT_NAME} )
+target_link_libraries(app_${PROJECT_NAME} ${PROJECT_NAME} gui_${PROJECT_NAME})
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Debug build detected, adding DEBUG_MODE definition")
     target_compile_definitions(${PROJECT_NAME} PRIVATE CementPlantV1DEBUG)
