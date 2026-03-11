@@ -7,13 +7,13 @@
 CementPlantMainWindow::CementPlantMainWindow( QWidget* parent, Qt::WindowFlags flags )
     : QMainWindow( parent, flags ),
     _UI( new Ui::cement_plant_main_window ),
-    m_CementPlant( new CementPlant() )
+    m_CementPlant( CementPlant::instance() )
 {
     _UI->setupUi( this );
 
     connect( _UI->action_Open, &QAction::triggered, this, &CementPlantMainWindow::slotOpen );
     connect( _UI->action_Quit, &QAction::triggered, this, &QMainWindow::close );
-    connect( m_CementPlant.get(), &CementPlant::setWidgwet, this, &CementPlantMainWindow::slotAddWidget );
+    connect( &m_CementPlant, &CementPlant::setWidgwet, this, &CementPlantMainWindow::slotAddWidget );
 }
 
 CementPlantMainWindow::~CementPlantMainWindow() {
@@ -22,7 +22,7 @@ CementPlantMainWindow::~CementPlantMainWindow() {
 
 void CementPlantMainWindow::slotOpen() {
     qDebug() << __PRETTY_FUNCTION__;
-    m_CementPlant->GUIViewControl();
+    m_CementPlant.GUIViewControl();
 }
 
 void CementPlantMainWindow::slotAddWidget( QWidget* widget ) {

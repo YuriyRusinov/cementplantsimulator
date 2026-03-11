@@ -10,7 +10,8 @@
 
 CementPlant::CementPlant( QObject *parent )
     : QObject( parent ),
-    m_simulationEng( new SimulationEngine )
+    m_model( std::make_shared< SimulationEngine >()),
+    m_plc( std::make_shared<SoftPLC>())
 {
 #ifdef CementPlantV1DEBUG
     qDebug() << __PRETTY_FUNCTION__;

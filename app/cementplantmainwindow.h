@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::cement_plant_main_window* _UI;
-    QSharedPointer< CementPlant > m_CementPlant;
+    CementPlant& m_CementPlant;
 
 private:
     Q_OBJECT

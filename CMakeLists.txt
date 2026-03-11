@@ -17,7 +17,7 @@ option(EXTRA_WARNING "build with warnings as errors" OFF)
 option(BUILD_APP "build app" ON)
 option(BUILD_TESTS "build tests" OFF)
 option(BUILD_BENCHMARK "build benchmarks" OFF)
-option(BUILD_SHARED "The handler as shared library" OFF)
+option(BUILD_SHARED "The handler as shared library" ON)
 
 if(EXTRA_WARNING)
     if(CMAKE_COMPILER_IS_GNUCXX)
