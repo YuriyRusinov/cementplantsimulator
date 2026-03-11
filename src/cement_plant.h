@@ -4,10 +4,10 @@
 #include <QThread>
 #include <QMutex>
 #include <memory>
-#include "simulationengine.h"
-#include "softplc.h"
-//#include "TagBridge.h"
-
+//
+class SimulationEngine;
+class SoftPLC;
+class TagBridge;
 /**
  * @brief Master Orchestrator (ECS Layer) for the Cement Plant Simulator.
  * Inherits QObject to manage the simulation thread lifecycle (SoW 7.1).
@@ -28,7 +28,7 @@ public:
     void setSimulationSpeed(double speed); // e.g., 1.0 to 10.0x (SoW 9.1)
 
     // Bridge Access for UI Signals/Slots (SoW 4.1)
-    //TagBridge* bridge() { return &m_bridge; }
+    std::shared_ptr<TagBridge> bridge() const { return m_bridge; }
 
     // Instructor Interface (SoW 4.2)
     void injectFault(const std::string& faultID);
@@ -50,7 +50,7 @@ private:
     // Core Components (Software Organization Diagram)
     std::shared_ptr<SimulationEngine> m_model;  // Pure C++ Math
     std::shared_ptr<SoftPLC> m_plc;            // Pure C++ Logic
-    //TagBridge m_bridge;       // QObject UI Bridge
+    std::shared_ptr<TagBridge> m_bridge;       // QObject UI Bridge
 
     // Threading (NFR 9.1)
     QThread m_simThread;

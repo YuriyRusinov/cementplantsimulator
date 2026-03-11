@@ -1,7 +1,13 @@
+#include <QtDebug>
 #include "softplc.h"
 #include <algorithm>
 
-SoftPLC::SoftPLC() {}
+SoftPLC::SoftPLC()
+{
+#ifdef CementPlantV1DEBUG
+    qDebug() << __PRETTY_FUNCTION__;
+#endif
+}
 
 void SoftPLC::update(std::map<std::string, double>& ioMap, double dt) {
     // 1. Safety and Equipment Interlocks (Highest Priority)

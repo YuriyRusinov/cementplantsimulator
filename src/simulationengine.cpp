@@ -1,9 +1,13 @@
+#include <QtDebug>
 #include "simulationengine.h"
 #include <fstream>
 #include <iostream>
 
 SimulationEngine::SimulationEngine() {
     reset();
+#ifdef CementPlantV1DEBUG
+    qDebug() << __PRETTY_FUNCTION__;
+#endif
 }
 
 void SimulationEngine::reset() {

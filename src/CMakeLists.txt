@@ -19,12 +19,14 @@ set(HEADERS
     cement_plant.h
     simulationengine.h
     softplc.h
+    tagbridge.h
 )
 
 set(SOURCES
     cement_plant.cpp
     simulationengine.cpp
     softplc.cpp
+    tagbridge.cpp
 )
 
 if (BUILD_SHARED)

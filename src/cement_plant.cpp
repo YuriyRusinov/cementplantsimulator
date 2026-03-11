@@ -6,12 +6,16 @@
 #include <classroomwidget.h>
 #include <plantmainwidget.h>
 #include <simulationengine.h>
+#include "softplc.h"
+#include "tagbridge.h"
+
 #include "cement_plant.h"
 
 CementPlant::CementPlant( QObject *parent )
     : QObject( parent ),
     m_model( std::make_shared< SimulationEngine >()),
-    m_plc( std::make_shared<SoftPLC>())
+    m_plc( std::make_shared<SoftPLC>()),
+    m_bridge( std::make_shared<TagBridge>() )
 {
 #ifdef CementPlantV1DEBUG
     qDebug() << __PRETTY_FUNCTION__;
