@@ -4,6 +4,8 @@
 #include <QThread>
 #include <QMutex>
 #include <memory>
+
+#include <processmodel.h>
 //
 class SimulationEngine;
 class SoftPLC;
@@ -55,6 +57,7 @@ private:
     std::shared_ptr<SimulationEngine> m_model;  // Pure C++ Math
     std::shared_ptr<SoftPLC> m_plc;            // Pure C++ Logic
     std::shared_ptr<TagBridge> m_bridge;       // QObject UI Bridge
+    std::shared_ptr<ProcessModel> m_proc;
 
     // Threading (NFR 9.1)
     QThread m_simThread;

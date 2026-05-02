@@ -10,12 +10,14 @@
 #include "tagbridge.h"
 
 #include "cement_plant.h"
+#include "opstationwidget.h"
 
 CementPlant::CementPlant( QObject *parent )
     : QObject( parent ),
     m_model( std::make_shared< SimulationEngine >()),
     m_plc( std::make_shared<SoftPLC>()),
-    m_bridge( std::make_shared<TagBridge>() )
+    m_bridge( std::make_shared<TagBridge>() ),
+    m_proc( std::make_shared<ProcessModel>() )
 {
 #ifdef CementPlantV1DEBUG
     qDebug() << __PRETTY_FUNCTION__;
@@ -39,6 +41,10 @@ void CementPlant::GUIViewControl( QWidget* parent, Qt::WindowFlags flags ) {
 
 void CementPlant::plantOPS() {
     qDebug() << __PRETTY_FUNCTION__;
+
+    QWidget* wSender = qobject_cast< QWidget* >( this->sender() );
+    OpStationWidget* opsW = new OpStationWidget( QSharedPointer< ProcessModel >(m_proc.get()), wSender );
+    emit setWidgwet( opsW );
 }
 
 void CementPlant::plantPXP() {
