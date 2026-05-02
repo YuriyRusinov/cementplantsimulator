@@ -29,6 +29,23 @@ CementPlant::~CementPlant() {
 }
 
 void CementPlant::GUIViewControl( QWidget* parent, Qt::WindowFlags flags ) {
-    QWidget* w = new PlantMainWidget( parent, flags ) ;//ClassRoomWidget( parent, flags );
+    PlantMainWidget* w = new PlantMainWidget( parent, flags ) ;//ClassRoomWidget( parent, flags );
     emit setWidgwet( w );
+
+    connect( w, &PlantMainWidget::startOPStation, this, &CementPlant::plantOPS );
+    connect( w, &PlantMainWidget::startPXP, this, &CementPlant::plantPXP );
+    connect( w, &PlantMainWidget::startQCX, this, &CementPlant::plantQCX );
 }
+
+void CementPlant::plantOPS() {
+    qDebug() << __PRETTY_FUNCTION__;
+}
+
+void CementPlant::plantPXP() {
+    qDebug() << __PRETTY_FUNCTION__;
+}
+
+void CementPlant::plantQCX() {
+    qDebug() << __PRETTY_FUNCTION__;
+}
+

@@ -10,6 +10,15 @@ class PlantMainWidget : public QWidget {
 public:
     explicit PlantMainWidget( QWidget *parent = nullptr, Qt::WindowFlags flags =  Qt::WindowFlags() );
 
+private slots:
+    void slotsOPStation();
+    void slotPXP();
+    void slotQCX();
+
+signals:
+    void startOPStation();
+    void startPXP();
+    void startQCX();
 private:
     // Core Layers from Diagram
     void setupTopLayer();    // OPStation, PXP, QCX

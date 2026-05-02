@@ -3,6 +3,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QtDebug>
 
 PlantMainWidget::PlantMainWidget( QWidget *parent, Qt::WindowFlags flags ) : QWidget( parent, flags ) {
     m_mainLayout = new QVBoxLayout(this);
@@ -31,6 +32,9 @@ void PlantMainWidget::setupTopLayer() {
     layout->addWidget(btnQcx);
 
     m_mainLayout->addWidget(topBar);
+    connect( btnOp, &QAbstractButton::clicked, this, &PlantMainWidget::slotsOPStation );
+    connect( btnPxp, &QAbstractButton::clicked, this, &PlantMainWidget::slotPXP );
+    connect( btnQcx, &QAbstractButton::clicked, this, &PlantMainWidget::slotQCX );
 }
 
 void PlantMainWidget::setupMiddleLayer() {
@@ -40,4 +44,19 @@ void PlantMainWidget::setupMiddleLayer() {
     ecsHeader->setStyleSheet("background-color: #A0A0A0; color: black; font-weight: bold;");
     
     m_mainLayout->addWidget(ecsHeader);
+}
+
+void PlantMainWidget::slotsOPStation() {
+    qDebug() << __PRETTY_FUNCTION__;
+    emit startOPStation();
+}
+
+void PlantMainWidget::slotPXP() {
+    qDebug() << __PRETTY_FUNCTION__;
+    emit startPXP();
+}
+
+void PlantMainWidget::slotQCX() {
+    qDebug() << __PRETTY_FUNCTION__;
+    emit startQCX();
 }

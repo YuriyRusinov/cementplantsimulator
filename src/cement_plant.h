@@ -38,6 +38,10 @@ signals:
     void setWidgwet( QWidget* w );
 
 
+private slots:
+    void plantOPS();
+    void plantPXP();
+    void plantQCX();
 private:
     // Private constructor for Singleton pattern
     explicit CementPlant(QObject *parent = nullptr);
